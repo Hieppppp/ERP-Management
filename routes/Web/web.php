@@ -1,0 +1,41 @@
+<?php
+
+use Routes\Web\AuthRoutes;
+use Routes\Web\BatchRoutes;
+use Routes\Web\CategoryRoutes;
+use Routes\Web\CityRoutes;
+use Routes\Web\CountryRoutes;
+use Routes\Web\HomeRoutes;
+use Routes\Web\InventoryRoutes;
+use Routes\Web\LogRoutes;
+use Routes\Web\ProductRoutes;
+use Routes\Web\ProvinceRoutes;
+use Routes\Web\PurchaseOrderRoutes;
+use Routes\Web\ReturnOrderRoutes;
+use Routes\Web\UnitRoutes;
+use Routes\Web\ShelveRoutes;
+use Routes\Web\SupplierRoutes;
+use Routes\Web\UserRoutes;
+use Routes\Web\WarehouseRoutes;
+use Routes\Web\CustomerRoutes;
+use Routes\Web\SaleOrderRoutes;
+
+AuthRoutes::routes();
+HomeRoutes::routes();
+UserRoutes::routes();
+WarehouseRoutes::routes();
+UnitRoutes::routes();
+ShelveRoutes::routes();
+SupplierRoutes::routes();
+CategoryRoutes::routes();
+ProductRoutes::routes();
+CountryRoutes::routes();
+ProvinceRoutes::routes();
+CityRoutes::routes();
+PurchaseOrderRoutes::routes();
+BatchRoutes::routes();
+LogRoutes::routes();
+ReturnOrderRoutes::routes();
+InventoryRoutes::routes();
+CustomerRoutes::routes();
+SaleOrderRoutes::routes();
