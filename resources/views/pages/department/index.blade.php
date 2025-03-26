@@ -8,7 +8,7 @@
     <!-- PAGE-HEADER -->
     <div class="page-header">
         <div>
-            <h1 class="page-title">{{ __('translation.position.management') }}</h1>
+            <h1 class="page-title">{{ __('translation.department.management') }}</h1>
         </div>
     </div>
     <!-- PAGE-HEADER END -->
@@ -18,18 +18,18 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header border-bottom d-flex justify-content-between">
-                    <h3 class="card-title">{{ __('translation.position.list') }}</h3>
+                    <h3 class="card-title">{{ __('translation.department.list') }}</h3>
                     <button class="btn btn-primary"
-                        onclick="showCreateModal()">{{ __('translation.position.create') }}</button>
+                        onclick="showCreateModal()">{{ __('translation.department.create') }}</button>
                 </div>
                 <div class="card-body overflow-auto">
-                    <table class="table table-bordered w-100 text-nowrap border-bottom" id="position-datatable">
+                    <table class="table table-bordered w-100 text-nowrap border-bottom" id="department-datatable">
                         <thead>
                             <tr>
                                 <th class="text-filter">#</th>
-                                <th class="text-filter">{{ __('translation.position.name') }}</th>
-                                <th class="text-filter">{{ __('translation.position.description') }}</th>
-                                <th class="no-sort">{{ __('translation.position.employeeQuantity') }}</th>
+                                <th class="text-filter">{{ __('translation.department.name') }}</th>
+                                <th class="text-filter">{{ __('translation.department.description') }}</th>
+                                <th class="no-sort">{{ __('translation.department.employeeQuantity') }}</th>
                                 <th class="no-sort">{{ __('translation.action') }}</th>
                             </tr>
                         </thead>
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="modal fade delete-modal" id="deletePosition" tabindex="-1" role="dialog">
+    <div class="modal fade delete-modal" id="deleteDepartment" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -62,5 +62,5 @@
 @endSection()
 
 @section('scripts')
-    <script src="{{ asset('assets/js/page/position/position.datatable.js') }}"></script>
+    <script src="{{ asset('assets/js/page/department/department.datatable.js') }}"></script>
 @endSection()

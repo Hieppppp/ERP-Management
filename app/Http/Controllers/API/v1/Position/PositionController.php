@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\v1\Position;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Position\PositionCreateRequest;
 use App\Http\Requests\Position\PositionDataTableRequest;
+use App\Http\Requests\Position\PositionUpdateRequest;
 use App\Services\Position\PositionServiceInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -42,20 +43,20 @@ class PositionController extends Controller
         return $this->responseSuccess();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PositionUpdateRequest $request, string $id)
     {
-        //
+        $params = $request->validated();
+        try {
+            $this->positionService->update($params, $id);
+            return $this->responseSuccess();
+        } catch (ModelNotFoundException $e) {
+            return $this->responseFail(trans('message.modal_not_found'));
+        }
     }
 
     /**

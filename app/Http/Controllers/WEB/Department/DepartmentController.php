@@ -1,31 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\WEB\Position;
+namespace App\Http\Controllers\WEB\Department;
 
 use App\Http\Controllers\Controller;
-use App\Services\Position\PositionServiceInterface;
+use App\Services\Department\DepartmentServiceInterface;
 use Illuminate\Console\View\Components\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class DepartmentController extends Controller
 {
-    protected PositionServiceInterface $positionService;
+    protected DepartmentServiceInterface $departmentService;
 
     public function __construct(
-        PositionServiceInterface $positionService
+        DepartmentServiceInterface $departmentService
     )
     {
-        $this->positionService = $positionService;
+        $this->departmentService = $departmentService;
     }
     /**
      * Display a listing of the resource.
      */
     public function index(): Factory|View
     {
-        return view("pages/position/index");
+        return view("pages/department/index");
     }
 
     /**
@@ -33,10 +33,8 @@ class PositionController extends Controller
      */
     public function create(): Factory|View
     {
-        return view("pages/position/create");
+        return view('pages/department/create');
     }
-
-   
 
     /**
      * Show the form for editing the specified resource.
@@ -44,8 +42,8 @@ class PositionController extends Controller
     public function edit(string $id): Factory|JsonResponse|View
     {
         try {
-            $params['position'] = $this->positionService->findById($id);
-            return view("pages/position/edit", $params);
+            $params['department'] = $this->departmentService->findById($id);
+            return view("pages/department/edit", $params);
         } catch (ModelNotFoundException $e) {
             return $this->responseFail(trans('message.modal_not_found'));
         }

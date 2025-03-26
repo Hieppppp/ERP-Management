@@ -20,6 +20,7 @@ use Routes\Api\v1\UserRoutes;
 use Routes\Api\v1\ValidateRoutes;
 use Routes\Api\v1\WarehouseRoutes;
 use Routes\Api\v1\CustomerRoutes;
+use Routes\Api\v1\DepartmentRoutes;
 use Routes\Api\v1\PositionRoutes;
 use Routes\Api\v1\SaleOrderRoutes;
 
@@ -56,4 +57,5 @@ Route::prefix('v1')->group(function () {
     CustomerRoutes::routes();
     SaleOrderRoutes::routes();
     PositionRoutes::routes();
+    DepartmentRoutes::routes();
 });

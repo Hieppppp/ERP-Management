@@ -738,10 +738,14 @@ return [
         "cie" => "CIE",
     ],
     "department" => [
-        "management" => "Department management",
+        "management" => "Department Management",
         "name" => "Name",
         "description" => "Description",
-        "list" => "Department List"
+        "list" => "Department List",
+        "employeeQuantity" => "Number of Employees",
+        "create" => "Create New Department",
+        "edit" => "Edit",
+
     ],
     "country" => [
         "management" => "Country Management",
@@ -1325,11 +1329,12 @@ return [
         "customerInvoice" => "Customer invoice",
     ],
     "position" => [
-        "management" => "Management",
+        "management" => "Position Management",
         "list" => "List",
-        "create" => "Create",
+        "create" => "Create New Position",
         "name" => "Name",
         "description" => "Description",
-        "employeeQuantity" => "Employee Quantity"
+        "employeeQuantity" => "Number of Employees",
+        "edit" => "Edit",
     ]
 ];
