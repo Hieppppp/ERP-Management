@@ -200,6 +200,8 @@ return [
         "invoice" => "Invoice",
         "customer" => "Customer",
         "saleOrder" => "Sale Order",
+        "hrm" => "HRM",
+        "position" => "Position"
     ],
     "log" => [
         "logList" => "Log list",
@@ -1322,4 +1324,12 @@ return [
         "paymentDate" => "Payment date",
         "customerInvoice" => "Customer invoice",
     ],
+    "position" => [
+        "management" => "Management",
+        "list" => "List",
+        "create" => "Create",
+        "name" => "Name",
+        "description" => "Description",
+        "employeeQuantity" => "Employee Quantity"
+    ]
 ];

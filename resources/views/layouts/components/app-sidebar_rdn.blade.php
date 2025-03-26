@@ -99,6 +99,23 @@
                         </a>
                     </li>
                 @endif
+                @if (PermissionRole::checkPermission([Permission::POSITION]))
+                    <li class="slide">
+                        <a class="side-menu__item {{ Menu::isActiveMenu(['position'], 'active') }}"
+                            data-bs-toggle="slide" href="#">
+                            <i class="side-menu__icon fa fa-users"></i>
+                            <span class="side-menu__label">{{ __('translation.menu.hrm') }} <i
+                                    class="numberCircle">6</i></span><i class="angle fa fa-angle-right"></i></a>
+                        <ul class="slide-menu">
+                            @if (PermissionRole::checkPermission([Permission::POSITION]))
+                                <li><a href="{{ url('position') }}"
+                                        class="slide-item {{ Menu::isActiveMenu(['position'], 'active') }}"><?php echo __('translation.menu.position'); ?></a>
+                                </li>
+                            @endif
+                        </ul>
+                        </a>
+                    </li>
+                @endif
                 @if (PermissionRole::checkPermission([Permission::WAREHOUSE, Permission::SHELVE, Permission::CATEGORY]))
                     <li class="slide">
                         <a class="side-menu__item {{ Menu::isActiveMenu(['warehouse', 'shelve', 'category'], 'active') }}"
