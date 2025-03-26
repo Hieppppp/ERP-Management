@@ -200,6 +200,8 @@ return [
         "invoice" => "Invoice",
         "customer" => "Customer",
         "saleOrder" => "Sale Order",
+        "hrm" => "HRM",
+        "position" => "Position"
     ],
     "log" => [
         "logList" => "Log list",
@@ -736,10 +738,14 @@ return [
         "cie" => "CIE",
     ],
     "department" => [
-        "management" => "Department management",
+        "management" => "Department Management",
         "name" => "Name",
         "description" => "Description",
-        "list" => "Department List"
+        "list" => "Department List",
+        "employeeQuantity" => "Number of Employees",
+        "create" => "Create New Department",
+        "edit" => "Edit",
+
     ],
     "country" => [
         "management" => "Country Management",
@@ -1322,4 +1328,13 @@ return [
         "paymentDate" => "Payment date",
         "customerInvoice" => "Customer invoice",
     ],
+    "position" => [
+        "management" => "Position Management",
+        "list" => "List",
+        "create" => "Create New Position",
+        "name" => "Name",
+        "description" => "Description",
+        "employeeQuantity" => "Number of Employees",
+        "edit" => "Edit",
+    ]
 ];

@@ -18,6 +18,8 @@ use Routes\Web\SupplierRoutes;
 use Routes\Web\UserRoutes;
 use Routes\Web\WarehouseRoutes;
 use Routes\Web\CustomerRoutes;
+use Routes\Web\DepartmentRoutes;
+use Routes\Web\PositionRoutes;
 use Routes\Web\SaleOrderRoutes;
 
 AuthRoutes::routes();
@@ -39,3 +41,5 @@ ReturnOrderRoutes::routes();
 InventoryRoutes::routes();
 CustomerRoutes::routes();
 SaleOrderRoutes::routes();
+PositionRoutes::routes();
+DepartmentRoutes::routes();
