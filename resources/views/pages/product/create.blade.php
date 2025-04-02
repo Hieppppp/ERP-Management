@@ -74,7 +74,7 @@
             <form id="product_create" class="jquery-validate-form" method="POST" action="{{ url('product') }}"
                 enctype="multipart/form-data">
                 @csrf
-                <div class="row pt-2 mb-4 m-0" style="border: 1px solid #eaedf1; margin-">
+                <div class="row pt-2 mb-4 m-0" style="border: 1px solid #eaedf1;">
                     <div class="col-lg-6 col-sm-12 row">
                         <div class="col-xl-6 col-lg-12">
                             <div class="row">

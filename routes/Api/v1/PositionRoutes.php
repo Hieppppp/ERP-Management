@@ -11,6 +11,7 @@ class PositionRoutes
     public static function routes()
     {
         return Route::middleware('auth')->group(function () {
+            Route::get('position/search', [PositionController::class, 'search']);
             Route::apiResource('position', PositionController::class);
         });
     }

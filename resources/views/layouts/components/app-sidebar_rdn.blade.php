@@ -28,7 +28,9 @@
                 <li class="slide">
                     <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{ url('/') }}">
                         <i class="side-menu__icon fa fa-home"></i>
-                        <span class="side-menu__label">{{ trans('translation.menu.dashboard') }}</span>
+                        <span class="side-menu__label">{{ __('translation.menu.dashboard') }} <i
+                                    class="numberCircle">1</i></span></a>
+                        
                     </a>
                 </li>
                 @if (PermissionRole::checkPermission([Permission::PRODUCT, Permission::PURCHASE_ORDER]))
@@ -99,14 +101,19 @@
                         </a>
                     </li>
                 @endif
-                @if (PermissionRole::checkPermission([Permission::POSITION]))
+                @if (PermissionRole::checkPermission([Permission::POSITION, Permission::DEPARTMENT, Permission::EMPLOYEE]))
                     <li class="slide">
                         <a class="side-menu__item {{ Menu::isActiveMenu(['position'], 'active') }}"
                             data-bs-toggle="slide" href="#">
                             <i class="side-menu__icon fa fa-users"></i>
                             <span class="side-menu__label">{{ __('translation.menu.hrm') }} <i
-                                    class="numberCircle">6</i></span><i class="angle fa fa-angle-right"></i></a>
+                                    class="numberCircle">5</i></span><i class="angle fa fa-angle-right"></i></a>
                         <ul class="slide-menu">
+                            @if (PermissionRole::checkPermission([Permission::EMPLOYEE]))
+                                <li><a href="{{ url('employee') }}"
+                                        class="slide-item {{ Menu::isActiveMenu(['employee'], 'active') }}"><?php echo __('translation.menu.employee'); ?></a>
+                                </li>
+                            @endif
                             @if (PermissionRole::checkPermission([Permission::POSITION]))
                                 <li><a href="{{ url('position') }}"
                                         class="slide-item {{ Menu::isActiveMenu(['position'], 'active') }}"><?php echo __('translation.menu.position'); ?></a>
@@ -154,7 +161,7 @@
                             data-bs-toggle="slide" href="#">
                             <i class="side-menu__icon fa fa-user"></i>
                             <span class="side-menu__label">{{ __('translation.menu.utility') }} <i
-                                    class="numberCircle">8</i></span><i class="angle fa fa-angle-right"></i></a>
+                                    class="numberCircle">7</i></span><i class="angle fa fa-angle-right"></i></a>
                         <ul class="slide-menu">
                             @if (PermissionUserRole::checkUserRole([UserRole::ADMIN]))
                                 <li>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\API\v1\Position;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Position\PositionCreateRequest;
 use App\Http\Requests\Position\PositionDataTableRequest;
+use App\Http\Requests\Position\PositionSearchRequest;
 use App\Http\Requests\Position\PositionUpdateRequest;
+use App\Http\Resources\Position\PositionSelectCollection;
 use App\Services\Position\PositionServiceInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -70,5 +72,13 @@ class PositionController extends Controller
         } catch (ModelNotFoundException $e) {
             return $this->responseFail(trans('message.modal_not_found'));
         }
+    }
+
+    public function search(PositionSearchRequest $request): JsonResponse
+    {
+        $params = $request->validated();
+        $positions = $this->positionService->search($params);
+        $positions = new PositionSelectCollection($positions);
+        return $this->responseSuccessForSelect($positions->transformer($request), $params['page']);
     }
 }

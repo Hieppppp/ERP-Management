@@ -537,6 +537,7 @@ return [
     ],
     "employee" => [
         "management" => "Employee Management",
+        "create" => "Create New Employee",
         "list" => "Employee List",
         "contactDetails" => "Contact Details",
         "other" => "Other",
@@ -569,7 +570,8 @@ return [
         "payOnCommission" => "Pay On Commission",
         "assignToProduction" => "Assign To Production",
         "assignToWorkOrder" => "Assign To Work Order",
-        "selectEmployee" => "Select Employee"
+        "selectEmployee" => "Select Employee",
+        "address" => "Address"
     ],
     "selectItems" => "Select Items",
     "work" => [

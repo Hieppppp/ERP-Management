@@ -11,6 +11,7 @@ return [
     App\Providers\ServiceProvider\CustomerProvider::class,
     App\Providers\ServiceProvider\DashboardProvider::class,
     App\Providers\ServiceProvider\DepartmentProvider::class,
+    App\Providers\ServiceProvider\EmployeeProvider::class,
     App\Providers\ServiceProvider\ImageProvider::class,
     App\Providers\ServiceProvider\PurchaseOrderProvider::class,
     App\Providers\ServiceProvider\InventoryProvider::class,

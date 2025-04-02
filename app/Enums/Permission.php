@@ -23,5 +23,6 @@ final class Permission extends Enum
     const SALE_ORDER = "sale_order";
     const POSITION = "position";
     const DEPARTMENT = "department";
+    const EMPLOYEE = "employee";
 
 }

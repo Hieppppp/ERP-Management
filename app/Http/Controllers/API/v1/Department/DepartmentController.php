@@ -5,7 +5,9 @@ namespace App\Http\Controllers\API\v1\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Department\DepartmentCreateRequest;
 use App\Http\Requests\Department\DepartmentDataTableRequest;
+use App\Http\Requests\Department\DepartmentSearchRequest;
 use App\Http\Requests\Department\DepartmentUpdateRequest;
+use App\Http\Resources\Department\DepartmentSelectCollection;
 use App\Services\Department\DepartmentServiceInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -67,5 +69,13 @@ class DepartmentController extends Controller
         } catch (ModelNotFoundException $e) {
             return $this->responseFail(trans('message.modal_not_found'));
         }
+    }
+
+    public function search(DepartmentSearchRequest $request): JsonResponse
+    {
+        $params = $request->validated();
+        $departments = $this->departmentService->search($params);
+        $departments = new DepartmentSelectCollection($departments);
+        return $this->responseSuccessForSelect($departments->transformer($request), $params['page']);
     }
 }
