@@ -36,6 +36,18 @@ const modelData = [
         id: "App\\Models\\Customer",
         text: 'translation.menu.customer'
     },
+    {
+        id: "App\\Models\\Department",
+        text: 'translation.menu.department'
+    },
+    {
+        id: "App\\Models\\Position",
+        text: 'translation.menu.position'
+    },
+    {
+        id: "App\\Models\\Employee",
+        text: 'translation.menu.employee'
+    },
 ];
 $(function (e) {
     logTable = $("#log-datatable").DataTable({
@@ -196,9 +208,12 @@ function renderUpdateDescription (data) {
         'App\\Models\\Unit': renderDescriptionByModel,
         'App\\Models\\Warehouse': renderDescriptionByModel,
         'App\\Models\\Category': renderCategory,
+        'App\\Models\\Department': renderCategory,
+        'App\\Models\\Position': renderCategory,
         'App\\Models\\Supplier': renderDescriptionByModel,
         'App\\Models\\Product': renderProductLog,
         'App\\Models\\Customer': renderDescriptionByModel,
+        'App\\Models\\Employee': renderDescriptionByModel,
         'default': renderDescriptionProduct
     };
 
@@ -257,6 +272,14 @@ function renderDescriptionByModel (attributes, old, module) {
             { key: 'province', trans: 'translation.customer.province' },
             { key: 'city', trans: 'translation.customer.city' },
             { key: 'avatar', trans: 'translation.customer.avatar', msgKey: 'message.updated'},
+        ],
+        'App\\Models\\Employee': [
+            { key: 'name', trans: 'translation.employee.name' },
+            { key: 'detail_address', trans: 'translation.employee.address' },
+            { key: 'city', trans: 'translation.employee.city' },
+            { key: 'province', trans: 'translation.employee.province' },
+            { key: 'country', trans: 'translation.employee.country' },
+            { key: 'postal_code', trans: 'translation.employee.postalCode' }
         ],
     };
 

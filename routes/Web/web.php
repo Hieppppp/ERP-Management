@@ -19,6 +19,7 @@ use Routes\Web\UserRoutes;
 use Routes\Web\WarehouseRoutes;
 use Routes\Web\CustomerRoutes;
 use Routes\Web\DepartmentRoutes;
+use Routes\Web\EmployeeRoutes;
 use Routes\Web\PositionRoutes;
 use Routes\Web\SaleOrderRoutes;
 
@@ -43,3 +44,4 @@ CustomerRoutes::routes();
 SaleOrderRoutes::routes();
 PositionRoutes::routes();
 DepartmentRoutes::routes();
+EmployeeRoutes::routes();

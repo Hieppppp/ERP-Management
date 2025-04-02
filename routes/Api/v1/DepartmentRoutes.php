@@ -10,7 +10,9 @@ class DepartmentRoutes
 {
     public static function routes()
     {
+       
         return Route::middleware('auth')->group(function () {
+            Route::get('department/search', [DepartmentController::class, 'search']);
             Route::apiResource('department', DepartmentController::class);
         });
     }

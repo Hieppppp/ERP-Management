@@ -36,8 +36,8 @@ $(function (e) {
                 name: "description"
             },
             {
-                data: "id",
-                name: "id"
+                data: "employee_quantity",
+                name: "employee_quantity"
             },
             {
                 data: function (data, type, row) {

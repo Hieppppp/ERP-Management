@@ -302,7 +302,7 @@
                 notification('error', trans("validation.largerThanFile", {
                     field: 5
                 }));
-                $('#imagePreview').attr('src', '{{ asset('assets/images/add-image.png') }}');
+                $('#imagePreview').attr('src', "{{ asset('assets/images/add-image.png') }}");
                 $(this).val('');
                 return;
             }
