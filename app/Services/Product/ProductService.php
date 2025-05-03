@@ -13,9 +13,12 @@ use App\Models\Product;
 use App\Services\BaseService;
 use App\Repositories\BaseRepository;
 use App\Repositories\Image\ImageRepositoryInterface;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductService extends BaseService implements ProductServiceInterface
@@ -78,6 +81,7 @@ class ProductService extends BaseService implements ProductServiceInterface
             }
         }
         $product->code = $this->createCode($product->id);
+        $this->generateQRCode($product);
         $product->save();
         activity('default')
             ->performedOn($product)
@@ -312,4 +316,31 @@ class ProductService extends BaseService implements ProductServiceInterface
             ->log(ActionLogEnum::DELETED);
         return Product::find($id)->delete();
     }
+
+    public function generateQRCode(Product $product)
+    {
+        // 1. Tạo QR code
+        $options = new QROptions([
+            'outputType' => QRCode::OUTPUT_IMAGE_PNG,
+            'eccLevel' => QRCode::ECC_L,
+            'scale' => 11,
+        ]);
+
+        $data = route('product.show', $product->id);
+        $qrImage = (new QRCode($options))->render($data);
+
+        // 2. Tạo tên file duy nhất
+        $fileName = 'qr-' . $product->id . '-' . time() . '.png';
+        $filePath = "product/{$fileName}";  // Lưu vào thư mục product trong storage/app/public
+
+        // 3. Lưu vào thư mục storage/app/public/product
+        Storage::disk('public')->put($filePath, $qrImage);  // Lưu vào đúng thư mục public/storage/product
+
+        // 4. Gán đường dẫn vào product (đường dẫn bắt đầu từ public)
+        $product->qr_code_path = $fileName;
+        $product->save();
+    }
+
+
+
 }

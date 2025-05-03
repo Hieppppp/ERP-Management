@@ -24,7 +24,10 @@
         <div class="card">
             <div class="card-header border-bottom d-flex justify-content-between">
                 <h3 class="card-title">{{ __('translation.customer.customerList') }}</h3>
-                <a class="btn btn-primary" href="{{ url('customer/create') }}">{{ __('translation.formTitle.customerCreate') }}</a>
+                <div class="d-flex gap-2">
+                    <button class="border btn btn-outline-primary">{{ __('translation.export') }}</button>
+                    <a class="btn btn-primary" href="{{ url('customer/create') }}">{{ __('translation.formTitle.customerCreate') }}</a>
+                </div>
             </div>
             <div class="card-body overflow-auto">
                 <table class="table w-100 table-bordered text-nowrap border-bottom" id="customer-datatable">

@@ -95,7 +95,7 @@
                     <label class="ps-4 fw-bold">{{ __('translation.product.information') }}</label>
                     <div>
                         <label class="m-4 heigt-lable-code-upc">
-                            <p class="code-upc">{{ $product['sku'] }}</p>
+                            <img src="{{ $product->qr_url }}" alt="QR Code" style="width: 100px; height: 100px;">
                         </label>
                     </div>
                     <div class="p-1 row m-0">
