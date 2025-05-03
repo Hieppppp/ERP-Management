@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -30,6 +31,12 @@ class Product extends Model
         'sku',
         'code',
     ];
+
+    protected $appends = [
+        'qr_url'
+    ];
+
+
 
 
     /**
@@ -80,5 +87,10 @@ class Product extends Model
     public function inventoryLogs(): HasMany
     {
         return $this->hasMany(InventoryLog::class, 'product_id')->whereNotNull('action')->orderBy('created_at', 'desc');
+    }
+
+    public function getQRUrlAttribute()
+    {
+        return $this->qr_code_path ? asset(Storage::url("product/{$this->qr_code_path}")) : null;
     }
 }
