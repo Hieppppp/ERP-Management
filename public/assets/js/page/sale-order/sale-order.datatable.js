@@ -189,3 +189,4 @@ function getScheduledDate(createdAt, paymentTerm) {
     }
     return html;
 }
+

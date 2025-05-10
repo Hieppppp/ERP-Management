@@ -3,6 +3,7 @@
 namespace App\Services\SaleOrder;
 
 use App\Common\Entity\DatatableParams;
+use App\Exports\RevenueReportExport;
 use App\Models\RegisterPayment;
 use App\Enums\SaleOrderReceiptStatusEnum;
 use App\Enums\SaleOrderStatusEnum;
@@ -19,6 +20,7 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SaleOrderService extends BaseService implements SaleOrderServiceInterface
 {
@@ -443,5 +445,12 @@ class SaleOrderService extends BaseService implements SaleOrderServiceInterface
     {
         $data = $this->getInvoicePDF($id);
         SendInvoiceJob::dispatch($data);
+    }
+
+    public function export()
+    {
+        $export = new RevenueReportExport();
+        return Excel::download($export, 'Revenue_Report.xlsx');
+
     }
 }

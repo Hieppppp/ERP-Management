@@ -9,6 +9,7 @@ use App\Services\BaseServiceInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
 
 interface SaleOrderServiceInterface extends BaseServiceInterface
 {
@@ -88,7 +89,7 @@ interface SaleOrderServiceInterface extends BaseServiceInterface
      */
     public function getStockAssignmentData(int $saleOrderDetailId): Collection|array;
 
-    /** 
+    /**
      * Get Invoice PDF
      *
      * @param  string $id
@@ -103,4 +104,9 @@ interface SaleOrderServiceInterface extends BaseServiceInterface
      * @return void
      */
     public function sendInvoicePDF(string $id): void;
+
+    public function export();
+
+    public function uploadFile($file);
+
 }

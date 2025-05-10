@@ -62,8 +62,12 @@
             <div class="card">
                 <div class="card-header border-bottom d-flex justify-content-between">
                     <h3 class="card-title">{{ __('translation.saleOrder.list') }}</h3>
-                    <a class="btn btn-primary"
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-primary border-0" href="{{ route('reports.export') }}">{{ __('translation.export') }}</a>
+                        <a class="btn btn-primary"
                         href="{{ url('sale-order/create') }}">{{ __('translation.saleOrder.create') }}</a>
+
+                    </div>
                 </div>
                 <div class="card-body overflow-auto">
                     <div class="d-flex">

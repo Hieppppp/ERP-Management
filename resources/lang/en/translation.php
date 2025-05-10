@@ -11,6 +11,7 @@ return [
     "edit" => "Edit",
     "delete" => "Delete",
     "detail" => "Detail",
+    "export" => "Export",
     "formTitle" => [
         "userCreate" => "Create New User",
         "userEdit" => "User Edit",
