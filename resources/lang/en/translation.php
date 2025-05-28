@@ -7,6 +7,7 @@ return [
     "chooseLanguage" => "Choose Language",
     "en" => "English",
     "fr" => "French",
+    "vi" => "VietNamese",
     "create" => "Create",
     "edit" => "Edit",
     "delete" => "Delete",
@@ -202,7 +203,8 @@ return [
         "customer" => "Customer",
         "saleOrder" => "Sale Order",
         "hrm" => "HRM",
-        "position" => "Position"
+        "position" => "Position",
+        "document" => "Document"
     ],
     "log" => [
         "logList" => "Log list",
@@ -1339,5 +1341,15 @@ return [
         "description" => "Description",
         "employeeQuantity" => "Number of Employees",
         "edit" => "Edit",
+    ],
+    "document" => [
+        "management" => "Document Management",
+        "documentList" => "Document List",
+        "create" => "Create New Document",
+        "fileName" => "File Name",
+        "fileHash" => "IPFS Hash",
+        "documentType" => "Document Type",
+        "uploadBy" => "Uploaded By",
+        "create_at" => "Created At",
     ]
 ];

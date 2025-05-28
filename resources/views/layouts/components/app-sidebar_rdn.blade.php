@@ -30,7 +30,7 @@
                         <i class="side-menu__icon fa fa-home"></i>
                         <span class="side-menu__label">{{ __('translation.menu.dashboard') }} <i
                                     class="numberCircle">1</i></span></a>
-                        
+
                     </a>
                 </li>
                 @if (PermissionRole::checkPermission([Permission::PRODUCT, Permission::PURCHASE_ORDER]))
@@ -128,7 +128,7 @@
                         </a>
                     </li>
                 @endif
-                @if (PermissionRole::checkPermission([Permission::WAREHOUSE, Permission::SHELVE, Permission::CATEGORY]))
+                @if (PermissionRole::checkPermission([Permission::WAREHOUSE, Permission::SHELVE, Permission::CATEGORY, Permission::DOCUMENT]))
                     <li class="slide">
                         <a class="side-menu__item {{ Menu::isActiveMenu(['warehouse', 'shelve', 'category'], 'active') }}"
                             data-bs-toggle="slide" href="#">
@@ -149,6 +149,11 @@
                             @if (PermissionRole::checkPermission([Permission::CATEGORY]))
                                 <li><a href="{{ url('category') }}"
                                         class="slide-item {{ Menu::isActiveMenu(['category'], 'active') }}"><?php echo __('translation.category.category'); ?></a>
+                                </li>
+                            @endif
+                            @if (PermissionRole::checkPermission([Permission::DOCUMENT]))
+                                <li><a href="{{ url('document') }}"
+                                        class="slide-item {{ Menu::isActiveMenu(['document'], 'active') }}"><?php echo __('translation.menu.document'); ?></a>
                                 </li>
                             @endif
                         </ul>

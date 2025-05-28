@@ -27,32 +27,49 @@ class DocumentService extends BaseService implements DocumentServiceInterface
 
     public function uploadFileDocument($file)
     {
-        $data = $this->client->post($this->urlDocument,[
+        $customFileName = request('custom_file_name') ?: $file->getClientOriginalName();
+        $documentType = request('document_type');
+
+        if (!in_array($documentType, \App\Enums\DocumentTypeEnum::getValues())) {
+            return response()->json(['message' => 'Invalid document type'], 422);
+        }
+        $data = $this->client->post($this->urlDocument, [
             'multipart' => [
-                'name' => 'file',
-                'contents' => fopen($file->path(), 'r'),
+                [
+                    'name' => 'file',
+                    'contents' => fopen($file->path(), 'r'),
+                    'filename' => $file->getClientOriginalName(),
+                ]
             ]
         ]);
 
         $body = json_decode($data->getBody(), true);
         $hash = $body['Hash'];
+
         return $this->store([
-            'file_name' => $file->getClientOriginalName(),
+            'file_name' => $customFileName,
             'ipfs_hash' => $hash,
+            'document_type' => $documentType,
         ]);
     }
 
     public function store(array $data)
     {
-        $existingFile = Document::where(['ipfs_hash' => $data['ipfs_hash']])->first();
+        $existingFile = Document::where('ipfs_hash', $data['ipfs_hash'])->first();
 
         if ($existingFile) {
             return response()->json([
-                'message' => 'File existed IPFS',
-                'ipfs_hash' => $existingFile->ipfs_hash
-            ], 409);
+                'message' => 'File already exists in IPFS',
+                'cid' => $existingFile->ipfs_hash
+            ], 200);
         }
-        return parent::create($data);
+
+        $data['uploaded_by'] = auth()->id();
+        $document = parent::create($data);
+        return response()->json([
+            'message' => 'File uploaded successfully',
+            'cid' => $document->ipfs_hash
+        ], 201);
     }
 
 }

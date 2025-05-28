@@ -19,10 +19,9 @@ class SaleOrderProvider extends ServiceProvider
     {
         $this->app->bind(SaleOrderRepositoryInterface::class, SaleOrderRepository::class);
         $saleOrderRepository = $this->app->get(SaleOrderRepository::class);
-        $documentService = $this->app->get(DocumentServiceInterface::class);
 
-        $this->app->bind(SaleOrderServiceInterface::class, function () use ($saleOrderRepository, $documentService) {
-            return new SaleOrderService($saleOrderRepository, $documentService);
+        $this->app->bind(SaleOrderServiceInterface::class, function () use ($saleOrderRepository) {
+            return new SaleOrderService($saleOrderRepository);
         });
     }
 

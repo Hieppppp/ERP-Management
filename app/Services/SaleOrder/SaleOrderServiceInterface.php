@@ -107,6 +107,5 @@ interface SaleOrderServiceInterface extends BaseServiceInterface
 
     public function export();
 
-    public function uploadFile($file);
 
 }
