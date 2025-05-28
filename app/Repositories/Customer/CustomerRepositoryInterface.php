@@ -14,4 +14,6 @@ interface CustomerRepositoryInterface extends BaseRepositoryInterface
      * @return LengthAwarePaginator
      */
     public function search(array $params): LengthAwarePaginator;
+
+    public function getCustomerBehaviorData();
 }

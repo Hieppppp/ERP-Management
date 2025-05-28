@@ -180,4 +180,11 @@ class SaleOrderController extends Controller
     {
         return $this->saleOrderService->export();
     }
+
+    public function getDataForChart()
+    {
+        $year = now()->year;
+        $chartData = $this->saleOrderService->getRevenueDataForChary($year);
+        return view('pages/sale-order/analysis', compact('chartData'));
+    }
 }

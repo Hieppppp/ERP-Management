@@ -34,7 +34,7 @@ class SaleOrderController extends Controller
         SaleOrderServiceInterface $saleOrderService
     ) {
         $this->saleOrderService = $saleOrderService;
-        
+
     }
 
     /**
@@ -188,6 +188,8 @@ class SaleOrderController extends Controller
         $data['viewPdf'] = true;
         return view('pages.invoice.pdf', $data);
     }
+
+    
 
 
 }

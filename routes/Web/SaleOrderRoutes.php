@@ -23,6 +23,7 @@ class SaleOrderRoutes
             ]);
             Route::get('sale-order/{id}/receipt', [SaleOrderController::class, 'receipt'])->middleware(["permission:" . implode(",", [Permission::SALE_ORDER])]);
             Route::get('sale-order/{id}/product/{product_id}/select-stock', [SaleOrderController::class, 'selectStock']);
+            Route::get('sale-order/analysis', [SaleOrderController::class, 'getDataForChart']);
 
         });
     }

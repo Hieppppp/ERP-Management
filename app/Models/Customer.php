@@ -81,4 +81,9 @@ class Customer extends Model
     {
         return implode(' ', [$this->first_name, $this->last_name]);
     }
+
+    public function saleOrders()
+    {
+        return $this->hasMany(SaleOrder::class, 'customer_id');
+    }
 }
