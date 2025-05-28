@@ -176,4 +176,8 @@ class SaleOrderController extends Controller
         }
         return view('pages/sale-order/select-stock', $data);
     }
+    public function exportRevenueReport()
+    {
+        return $this->saleOrderService->export();
+    }
 }

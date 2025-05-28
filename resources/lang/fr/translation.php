@@ -7,6 +7,7 @@ return [
     "chooseLanguage" => "Choisir la langue",
     "en" => "Anglais",
     "fr" => "Français",
+    "vi" => "VietNamese",
     "create" => "Créer",
     "edit" => "Modifier",
     "delete" => "Supprimer",
