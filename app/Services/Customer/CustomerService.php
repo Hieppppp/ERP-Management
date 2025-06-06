@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 class CustomerService extends BaseService implements CustomerServiceInterface
 {
 
-    protected CustomerRepositoryInterface $customerRepository;
+    // protected CustomerRepositoryInterface $customerRepository;
     /**
      * @param CustomerRepository $repository
      *
@@ -21,10 +21,10 @@ class CustomerService extends BaseService implements CustomerServiceInterface
      */
     public function __construct(
         BaseRepository $repository,
-        CustomerRepositoryInterface $customerRepository
+        // CustomerRepositoryInterface $customerRepository
     ) {
         parent::__construct($repository);
-        $this->customerRepository = $customerRepository;
+        // $this->customerRepository = $customerRepository;
     }
 
     /**
@@ -88,27 +88,27 @@ class CustomerService extends BaseService implements CustomerServiceInterface
         return $this->repository->search($params);
     }
 
-    public function analyzeCustomerBehavior()
-    {
-        $customers = $this->customerRepository->getCustomerBehaviorData();
-        $classifiedCustomers = [
-            'vip'       => [],
-            'frequent'  => [],
-            'others'    => [],
-        ];
+    // public function analyzeCustomerBehavior()
+    // {
+    //     $customers = $this->customerRepository->getCustomerBehaviorData();
+    //     $classifiedCustomers = [
+    //         'vip'       => [],
+    //         'frequent'  => [],
+    //         'others'    => [],
+    //     ];
 
-        foreach ($customers as $customer) {
-            $totalSpending = $customer->sale_orders_sum_total_amount ?? 0;
-            $orderCount = $customer->sale_orders_count ?? 0;
+    //     foreach ($customers as $customer) {
+    //         $totalSpending = $customer->sale_orders_sum_total_amount ?? 0;
+    //         $orderCount = $customer->sale_orders_count ?? 0;
 
-            if ($totalSpending > 50000000) {
-                $classifiedCustomers['vip'][] = $customer;
-            } elseif ($orderCount > 10) {
-                $classifiedCustomers['frequent'][] = $customer;
-            } else {
-                $classifiedCustomers['others'][] = $customer;
-            }
-        }
-        return $classifiedCustomers;
-    }
+    //         if ($totalSpending > 50000000) {
+    //             $classifiedCustomers['vip'][] = $customer;
+    //         } elseif ($orderCount > 10) {
+    //             $classifiedCustomers['frequent'][] = $customer;
+    //         } else {
+    //             $classifiedCustomers['others'][] = $customer;
+    //         }
+    //     }
+    //     return $classifiedCustomers;
+    // }
 }
