@@ -114,4 +114,12 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         }
         return $customer->paginate();
     }
+
+    public function getCustomerBehaviorData()
+    {
+        return $this->getModel()->select('customers.*')
+            ->withCount('saleOrders')
+            ->withSum('saleOrders', 'total_amount')
+            ->get();
+    }
 }

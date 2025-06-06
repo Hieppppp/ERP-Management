@@ -22,6 +22,7 @@ return [
     App\Providers\ServiceProvider\ProductProvider::class,
     App\Providers\ServiceProvider\ProvinceProvider::class,
     App\Providers\ServiceProvider\ReturnOrderProvider::class,
+    App\Providers\ServiceProvider\SaleOrderDetailProvider::class,
     App\Providers\ServiceProvider\SaleOrderProvider::class,
     App\Providers\ServiceProvider\ShelveProvider::class,
     App\Providers\ServiceProvider\SupplierProvider::class,

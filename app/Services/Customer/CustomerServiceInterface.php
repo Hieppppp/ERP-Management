@@ -14,4 +14,8 @@ interface CustomerServiceInterface extends BaseServiceInterface
      * @return LengthAwarePaginator
      */
     public function search(array $params): LengthAwarePaginator;
+
+    // public function analyzeCustomerBehavior();
+
+
 }

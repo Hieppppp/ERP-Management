@@ -18,6 +18,7 @@ class SaleOrderRoutes
             Route::post('sale-order/{id}/update-status', [SaleOrderController::class, 'updateStatus']);
             Route::post('sale-order/{id}/validate', [SaleOrderController::class, 'validateROG']);
             Route::post('sale-order/{id}/product/{product_id}/add-stock', [SaleOrderController::class, 'addStock']);
+            
         });
     }
 }

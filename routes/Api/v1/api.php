@@ -24,6 +24,7 @@ use Routes\Api\v1\DepartmentRoutes;
 use Routes\Api\V1\DocumentRoutes;
 use Routes\Api\v1\EmployeeRoutes;
 use Routes\Api\v1\PositionRoutes;
+use Routes\Api\V1\SaleOrderDetailRoutes;
 use Routes\Api\v1\SaleOrderRoutes;
 
 /*
@@ -62,4 +63,5 @@ Route::prefix('v1')->group(function () {
     DepartmentRoutes::routes();
     EmployeeRoutes::routes();
     DocumentRoutes::routes();
+    SaleOrderDetailRoutes::routes();
 });

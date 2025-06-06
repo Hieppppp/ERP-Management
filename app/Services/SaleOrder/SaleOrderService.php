@@ -453,4 +453,37 @@ class SaleOrderService extends BaseService implements SaleOrderServiceInterface
         return Excel::download($export, 'Revenue_Report.xlsx');
 
     }
+
+    protected function getRevenueMonth($year)
+    {
+        return $this->repository->getModel()
+            ->selectRaw('MONTH(created_at) as month, SUM(total_amount) as revenue')
+            ->whereYear('created_at', $year)
+            ->groupByRaw('MONTH(created_at)')
+            ->orderByRaw('MONTH(created_at)') // ensures proper order
+            ->get();
+    }
+
+    public function getRevenueDataForChary($year)
+    {
+        $revenues = $this->getRevenueMonth($year);
+
+        $labels = [];
+        $data = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $labels[] = "Tháng $i";
+            $data[$i] = 0;
+        }
+
+        foreach ($revenues as $revenue) {
+            $data[$revenue->month] = $revenue->revenue;
+        }
+
+        return [
+            'label' => $labels,
+            'data'  => array_values($data), // keeps chart data aligned
+        ];
+    }
+
 }

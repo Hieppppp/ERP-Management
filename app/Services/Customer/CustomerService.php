@@ -6,23 +6,27 @@ use App\Helpers\FileHelper;
 use App\Services\BaseService;
 use App\Repositories\BaseRepository;
 use App\Repositories\Customer\CustomerRepository;
+use App\Repositories\Customer\CustomerRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 
 class CustomerService extends BaseService implements CustomerServiceInterface
 {
 
+    // protected CustomerRepositoryInterface $customerRepository;
     /**
      * @param CustomerRepository $repository
      *
      * @return void
      */
     public function __construct(
-        BaseRepository $repository
+        BaseRepository $repository,
+        // CustomerRepositoryInterface $customerRepository
     ) {
         parent::__construct($repository);
+        // $this->customerRepository = $customerRepository;
     }
-    
+
     /**
      * create
      *
@@ -40,7 +44,7 @@ class CustomerService extends BaseService implements CustomerServiceInterface
         $customer->disableLogging()->save();
         return $customer;
     }
-    
+
     /**
      * update
      *
@@ -72,7 +76,7 @@ class CustomerService extends BaseService implements CustomerServiceInterface
     {
         return 'CUS' . str_pad($customerId, 4, '0', STR_PAD_LEFT);
     }
-    
+
     /**
      * search
      *
@@ -83,4 +87,28 @@ class CustomerService extends BaseService implements CustomerServiceInterface
     {
         return $this->repository->search($params);
     }
+
+    // public function analyzeCustomerBehavior()
+    // {
+    //     $customers = $this->customerRepository->getCustomerBehaviorData();
+    //     $classifiedCustomers = [
+    //         'vip'       => [],
+    //         'frequent'  => [],
+    //         'others'    => [],
+    //     ];
+
+    //     foreach ($customers as $customer) {
+    //         $totalSpending = $customer->sale_orders_sum_total_amount ?? 0;
+    //         $orderCount = $customer->sale_orders_count ?? 0;
+
+    //         if ($totalSpending > 50000000) {
+    //             $classifiedCustomers['vip'][] = $customer;
+    //         } elseif ($orderCount > 10) {
+    //             $classifiedCustomers['frequent'][] = $customer;
+    //         } else {
+    //             $classifiedCustomers['others'][] = $customer;
+    //         }
+    //     }
+    //     return $classifiedCustomers;
+    // }
 }
