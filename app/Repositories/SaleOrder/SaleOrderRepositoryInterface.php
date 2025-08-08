@@ -43,4 +43,6 @@ interface SaleOrderRepositoryInterface extends BaseRepositoryInterface
      * @return Paginator|LengthAwarePaginator
      */
     public function getInvoiceList(DatatableParams $params): Paginator|LengthAwarePaginator;
+
+    
 }

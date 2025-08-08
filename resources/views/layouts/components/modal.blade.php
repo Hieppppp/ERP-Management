@@ -20,6 +20,12 @@
                             <span class="country-selector">{{ __('translation.fr') }}</span>
                         </a>
                     </li>
+                    <li class="col-lg-4 mb-2">
+                        <a class="btn btn-country btn-lg btn-block <?= app()->getLocale() == 'vi' ? 'active' : '' ?>"
+                            href="<?= route('lang', 'vi') ?>">
+                            <span class="country-selector">{{ __('translation.vi') }}</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

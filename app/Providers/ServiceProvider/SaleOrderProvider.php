@@ -2,8 +2,10 @@
 
 namespace App\Providers\ServiceProvider;
 
+use App\Repositories\Document\DocumentRepository;
 use App\Repositories\SaleOrder\SaleOrderRepository;
 use App\Repositories\SaleOrder\SaleOrderRepositoryInterface;
+use App\Services\Document\DocumentServiceInterface;
 use App\Services\SaleOrder\SaleOrderService;
 use App\Services\SaleOrder\SaleOrderServiceInterface;
 use Illuminate\Support\ServiceProvider;

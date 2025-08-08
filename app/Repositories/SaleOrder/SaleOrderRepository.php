@@ -184,4 +184,6 @@ class SaleOrderRepository extends BaseRepository implements SaleOrderRepositoryI
         $query = $query->groupBy('sale_orders.id');
         return $query->paginate($params->length, $params->columns, 'page', $params->page);
     }
+
+    
 }

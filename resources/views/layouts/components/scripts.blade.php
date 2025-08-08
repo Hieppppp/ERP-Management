@@ -55,3 +55,7 @@
 <script src="{{ asset('assets/js/custom1.js') }}"></script>
 
 <!-- INTERNAL SWITCHER JS -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+

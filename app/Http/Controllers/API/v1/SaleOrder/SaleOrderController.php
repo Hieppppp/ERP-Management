@@ -16,6 +16,7 @@ use App\Models\RegisterPayment;
 use App\Models\SaleOrder;
 use App\Services\SaleOrder\SaleOrderServiceInterface;
 use Barryvdh\DomPDF\Facade\Pdf;
+use GuzzleHttp\Client;
 use Illuminate\Console\View\Components\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -27,10 +28,13 @@ class SaleOrderController extends Controller
 {
     protected SaleOrderServiceInterface $saleOrderService;
 
+
+
     public function __construct(
         SaleOrderServiceInterface $saleOrderService
     ) {
         $this->saleOrderService = $saleOrderService;
+
     }
 
     /**
@@ -184,4 +188,8 @@ class SaleOrderController extends Controller
         $data['viewPdf'] = true;
         return view('pages.invoice.pdf', $data);
     }
+
+    
+
+
 }
