@@ -80,4 +80,10 @@ return [
     "allProductNeedValidate" => "All product need to validate the stock!",
     "insufficientStock" => "Some items do not have sufficient stock to fulfill this order!",
     "notDeleteProduct" => "Cannot delete this product",
+    "materialRequest" => [
+        "invalidStatus" => "This material request cannot perform the selected action in its current status.",
+        "invalidAllocation" => "Each issue allocation must use a requested material and a matching stock location.",
+        "insufficientStock" => "The requested issue quantity exceeds the remaining request or available stock.",
+        "issued" => "Materials have been issued successfully.",
+    ],
 ];

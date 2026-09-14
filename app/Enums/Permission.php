@@ -25,5 +25,6 @@ final class Permission extends Enum
     const DEPARTMENT = "department";
     const EMPLOYEE = "employee";
     const DOCUMENT = "document";
+    const MATERIAL_REQUEST = "material_request";
 
 }

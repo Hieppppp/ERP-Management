@@ -80,4 +80,10 @@ return [
     "allProductNeedValidate" => "Tất cả sản phẩm cần xác nhận tồn kho!",
     "insufficientStock" => "Một số mặt hàng không có đủ tồn kho để thực hiện đơn hàng này!",
     "notDeleteProduct" => "Không thể xóa sản phẩm này",
+    "materialRequest" => [
+        "invalidStatus" => "Phiếu yêu cầu vật tư không thể thực hiện thao tác này ở trạng thái hiện tại.",
+        "invalidAllocation" => "Mỗi dòng cấp phát phải thuộc vật tư được yêu cầu và đúng vị trí tồn kho.",
+        "insufficientStock" => "Số lượng cấp phát vượt quá số lượng còn yêu cầu hoặc tồn kho hiện có.",
+        "issued" => "Đã cấp phát vật tư thành công.",
+    ],
 ];

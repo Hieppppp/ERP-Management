@@ -9,6 +9,18 @@
 
 ## About Laravel
 
+## Docker
+
+The container stack uses PHP 8.3 FPM, Nginx, MariaDB 11.4 LTS, Redis and a dedicated queue worker. Only Nginx is exposed to the host; database and Redis are private to the Docker network. MariaDB, Redis and Laravel storage use named volumes so data survives container recreation.
+
+1. Copy `.env.example` to `.env` if it does not already exist. Set secure, unique values for `DB_PASSWORD` and `DB_ROOT_PASSWORD`. Set `APP_KEY=base64:<value>` using `openssl rand -base64 32` (or run `php artisan key:generate` if PHP dependencies are installed locally).
+2. Start the stack from this directory: `docker compose up --build -d`.
+3. Open `http://localhost:8080`. Follow logs with `docker compose logs -f`.
+
+`RUN_MIGRATIONS` defaults to `true` for local convenience. Set it to `false` in production and run migrations explicitly using `docker compose exec app php artisan migrate --force` as part of your deployment process.
+
+Stop services with `docker compose down`. This keeps database data. Add `-v` only when you intentionally want to remove all local database, Redis, and application-storage data.
+
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

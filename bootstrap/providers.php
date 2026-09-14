@@ -17,6 +17,7 @@ return [
     App\Providers\ServiceProvider\ImageProvider::class,
     App\Providers\ServiceProvider\InventoryProvider::class,
     App\Providers\ServiceProvider\LogProvider::class,
+    App\Providers\ServiceProvider\MaterialRequestProvider::class,
     App\Providers\ServiceProvider\PermissionProvider::class,
     App\Providers\ServiceProvider\PositionProvider::class,
     App\Providers\ServiceProvider\ProductProvider::class,
