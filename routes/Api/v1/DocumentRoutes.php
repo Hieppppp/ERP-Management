@@ -1,6 +1,6 @@
 <?php
 
-namespace Routes\Api\V1;
+namespace Routes\Api\v1;
 
 use App\Http\Controllers\API\v1\Document\DocumentController;
 use Illuminate\Support\Facades\Route;
