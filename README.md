@@ -21,6 +21,28 @@ The container stack uses PHP 8.3 FPM, Nginx, MariaDB 11.4 LTS, Redis and a dedic
 
 Stop services with `docker compose down`. This keeps database data. Add `-v` only when you intentionally want to remove all local database, Redis, and application-storage data.
 
+### Tests
+
+The test suite uses a separate MariaDB database named `erp_test`; it never uses the application database. Create it once after the stack is running:
+
+```bash
+docker compose exec db sh -lc 'mariadb -uroot -p"$MARIADB_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS erp_test; GRANT ALL PRIVILEGES ON erp_test.* TO '\''erp'\''@'\''%'\''; FLUSH PRIVILEGES;"'
+```
+
+Run all tests with output:
+
+```bash
+docker compose --profile test run --build --rm test
+```
+
+`--build` is important after source, migration, or test changes: the test container is intentionally isolated and does not mount the working directory.
+
+To run only the Material Request unit tests:
+
+```bash
+docker compose --profile test run --build --rm --entrypoint php test artisan test --testsuite=Unit --filter=MaterialRequest
+```
+
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

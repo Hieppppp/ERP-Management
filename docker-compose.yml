@@ -115,6 +115,34 @@ services:
     networks:
       - backend
 
+  test:
+    profiles: ["test"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    env_file:
+      - .env
+    environment:
+      APP_ENV: testing
+      APP_KEY: ${APP_KEY:?Set APP_KEY in .env before starting Docker}
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: erp_test
+      DB_USERNAME: ${DB_USERNAME:-erp}
+      DB_PASSWORD: ${DB_PASSWORD:-erp}
+      CACHE_STORE: array
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: array
+      RUN_MIGRATIONS: "false"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: php artisan test
+    networks:
+      - backend
+
 volumes:
   db-data:
   redis-data:

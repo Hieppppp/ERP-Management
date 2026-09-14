@@ -45,3 +45,12 @@ USER www-data
 EXPOSE 9000
 ENTRYPOINT ["app-entrypoint"]
 CMD ["php-fpm"]
+
+FROM runtime AS test
+USER root
+COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
+COPY .env.testing.example .env
+RUN composer install --no-interaction --no-progress --prefer-dist --optimize-autoloader \
+    --ignore-platform-req=php \
+    && chown -R www-data:www-data vendor bootstrap/cache storage
+USER www-data
